@@ -1,6 +1,7 @@
 import "./App.css";
 import Item from "./components/Item";
 import ItemDate from "./components/ItemDate";
+import Card from "./components/Card";
 
 function App() {
   const response = [
@@ -24,7 +25,7 @@ function App() {
     },
   ];
   return (
-    <>
+    <Card>
       <Item name={response[0].itemName}>I am first item</Item>
       <ItemDate
         day={response[0].itemDate}
@@ -44,7 +45,7 @@ function App() {
         year={response[2].itemYear}
       ></ItemDate>
       <div className="App">Hello</div>;
-    </>
+    </Card>
   );
 }
 
