@@ -7,6 +7,10 @@ function App() {
     <>
       <Item></Item>
       <ItemDate></ItemDate>
+      <Item></Item>
+      <ItemDate></ItemDate>
+      <Item></Item>
+      <ItemDate></ItemDate>
       <div className="App">Hello</div>;
     </>
   );
