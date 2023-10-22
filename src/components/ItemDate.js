@@ -1,10 +1,10 @@
 import React from "react";
 import "./ItemDate.css";
 
-function ItemDate() {
-  const day = 20;
-  const month = "May";
-  const year = 1999;
+function ItemDate(props) {
+  const day = props.day;
+  const month = props.month;
+  const year = props.year;
 
   return (
     <div className="mfg-date">
