@@ -25,7 +25,7 @@ function App() {
   ];
   return (
     <>
-      <Item name={response[0].itemName}></Item>
+      <Item name={response[0].itemName}>I am first item</Item>
       <ItemDate
         day={response[0].itemDate}
         month={response[0].itemMonth}
