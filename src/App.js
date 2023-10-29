@@ -24,6 +24,13 @@ function App() {
       itemYear: "199933",
     },
   ];
+
+  // function clickHandler() {
+  //   alert("Clicked!");
+  // }
+  const clickHandler = () => {
+    console.log("Clicked");
+  };
   return (
     <Card>
       <Item className="nirma" name={response[0].itemName}>
@@ -46,7 +53,8 @@ function App() {
         month={response[2].itemMonth}
         year={response[2].itemYear}
       ></ItemDate>
-      <div className="App">Hello</div>;
+      <div className="App">Hello</div>
+      <button onClick={clickHandler}>Click Me</button>
     </Card>
   );
 }
