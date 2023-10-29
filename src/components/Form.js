@@ -5,23 +5,40 @@ const Form = () => {
   const [date, setDate] = useState("");
   function titleChangeHandler(event) {
     setTitle(event.target.value);
-    console.log(event.target.value);
+    //   console.log(event.target.value);
   }
   function dateChangeHandler(event) {
     setDate(event.target.value);
-    console.log(event.target.value);
+    //   console.log(event.target.value);
+  }
+
+  const [productDetails, setProductDetails] = useState({ title: "", date: "" });
+
+  function submitHandler(event) {
+    event.preventDefault();
+    console.log("Form Submitted");
+
+    const productDate = {
+      title,
+      date,
+    };
+
+    console.log(productDate);
+    setTitle("");
+    setDate("");
   }
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div>
         <label>Title</label>
-        <input type="text" onChange={titleChangeHandler} />
+        <input type="text" value={title} onChange={titleChangeHandler} />
       </div>
       <div>
         <label>Date</label>
         <input
           type="date"
+          value={date}
           onChange={dateChangeHandler}
           min="2023-01-01"
           max="2023-12-12"
