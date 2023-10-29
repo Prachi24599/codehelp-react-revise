@@ -2,11 +2,9 @@ import "./App.css";
 import Item from "./components/Item";
 import ItemDate from "./components/ItemDate";
 import Card from "./components/Card";
-import React, { useState } from "react";
+import Form from "./components/Form";
 
 function App() {
-  const [title, setTitle] = useState("Heyy");
-  const [username, setUserName] = useState("");
   const response = [
     {
       itemName: "Nirma",
@@ -28,19 +26,6 @@ function App() {
     },
   ];
 
-  // function clickHandler() {
-  //   alert("Clicked!");
-  // }
-
-  const inputHandler = (event) => {
-    setUserName(event.target.value);
-    console.log(username);
-  };
-
-  const clickHandler = () => {
-    console.log("Clicked");
-    setTitle("Hola");
-  };
   return (
     <Card>
       <Item className="nirma" name={response[0].itemName}>
@@ -63,14 +48,8 @@ function App() {
         month={response[2].itemMonth}
         year={response[2].itemYear}
       ></ItemDate>
-      <div className="App">{title}</div>
-      <input
-        onChange={inputHandler}
-        type="text"
-        name="username"
-        value={username}
-      />
-      <button onClick={clickHandler}>Click Me</button>
+      <div className="App">Hello</div>
+      <Form />
     </Card>
   );
 }

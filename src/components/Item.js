@@ -5,7 +5,9 @@ const Item = (props) => {
   const itemName = props.name;
   return (
     <div>
-      <p className={props.className}>{itemName}</p>;{props.children}
+      {/* <p className={props.className}>{itemName}</p>{props.children} */}
+      <p className="nirma">{itemName}</p>
+      {props.children}
     </div>
   );
 };
