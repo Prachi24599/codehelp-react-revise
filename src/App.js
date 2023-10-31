@@ -10,6 +10,15 @@ const App = () => {
     setTours(newTours);
   }
 
+  if (!tours.length) {
+    return (
+      <div className="refresh">
+        <h2>No Tours Left</h2>
+        <button onClick={() => setTours(data)}>Refresh</button>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h2>Plan With Love</h2>
