@@ -13,9 +13,14 @@ const App = () => {
   // });.
 
   // 2 : On First Render
+  // useEffect(() => {
+  //   console.log("On First Render");
+  // }, []);
+
+  // 3. On First Render + Whenevery dependency changes
   useEffect(() => {
-    console.log("On First Render");
-  }, []);
+    console.log("Change Observed");
+  }, [text]);
 
   return (
     <div>
