@@ -7,9 +7,15 @@ const App = () => {
     console.log(text);
   }
 
+  // 1: On Every Render
+  // useEffect(() => {
+  //   console.log("UI Rendering Done!");
+  // });.
+
+  // 2 : On First Render
   useEffect(() => {
-    console.log("UI Rendering Done!");
-  });
+    console.log("On First Render");
+  }, []);
 
   return (
     <div>
