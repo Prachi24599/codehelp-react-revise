@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const App = () => {
   const [text, setText] = useState("");
@@ -6,6 +6,11 @@ const App = () => {
     setText(event.target.value);
     console.log(text);
   }
+
+  useEffect(() => {
+    console.log("UI Rendering Done!");
+  });
+
   return (
     <div>
       <input type="text" onChange={changeHandler} />
