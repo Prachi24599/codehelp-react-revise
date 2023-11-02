@@ -6,7 +6,7 @@ import { apiUrl, filterData } from "./data";
 import { toast } from "react-toastify";
 
 const App = () => {
-  const [courses, setCourses] = useState(null);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,6 +14,7 @@ const App = () => {
         const res = await fetch(apiUrl);
         const output = await res.json();
         console.log(output.data);
+
         setCourses(output.data);
       } catch (error) {
         toast.error("Something went wrong");
