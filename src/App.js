@@ -13,7 +13,7 @@ const App = () => {
       try {
         const res = await fetch(apiUrl);
         const output = await res.json();
-        console.log(output);
+        console.log(output.data);
         setCourses(output.data);
       } catch (error) {
         toast.error("Something went wrong");
