@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export const Filter = () => {
-  return (
-    <div>Filter</div>
-  )
-}
+const Filter = () => {
+  return <div>Filter</div>;
+};
+
+export default Filter;
