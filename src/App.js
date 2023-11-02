@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Navbar from "./components/Navbar";
+import Filter from "./components/Filter";
+import Cards from "./components/Cards";
 
 const App = () => {
   return (
     <div>
-      <h1>Hello World</h1>
+      <Navbar />
+      <Filter />
+      <Cards />
     </div>
   );
 };
