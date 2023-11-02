@@ -18,8 +18,17 @@ const App = () => {
   // }, []);
 
   // 3. On First Render + Whenevery dependency changes
+  // useEffect(() => {
+  //   console.log("Change Observed");
+  // }, [text]);
+
+  // 4. To Handle unmounting of element
   useEffect(() => {
-    console.log("Change Observed");
+    console.log("Listener Added");
+    //Cleanup function
+    return () => {
+      console.log("Listener Removed");
+    };
   }, [text]);
 
   return (
