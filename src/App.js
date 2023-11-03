@@ -7,20 +7,23 @@ import { toast } from "react-toastify";
 
 const App = () => {
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(apiUrl);
+      const output = await res.json();
+      console.log(output.data);
+      setCourses(output.data);
+    } catch (error) {
+      toast.error("Something went wrong");
+      console.log(error);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(apiUrl);
-        const output = await res.json();
-        console.log(output.data);
-
-        setCourses(output.data);
-      } catch (error) {
-        toast.error("Something went wrong");
-        console.log(error);
-      }
-    };
     fetchData();
   }, []);
 
