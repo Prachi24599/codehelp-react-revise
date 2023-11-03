@@ -3,7 +3,7 @@ import { FcLike } from "react-icons/fc";
 
 const Card = ({ course }) => {
   return (
-    <div>
+    <div className="w-[300px]">
       <div>
         <img src={course.image.url} alt={course.image.alt} />
         <button>
