@@ -4,6 +4,7 @@ import Filter from "./components/Filter";
 import Cards from "./components/Cards";
 import { apiUrl, filterData } from "./data";
 import { toast } from "react-toastify";
+import Spinner from "./components/Spinner";
 
 const App = () => {
   const [courses, setCourses] = useState([]);
@@ -31,7 +32,7 @@ const App = () => {
     <div>
       <Navbar />
       <Filter filterData={filterData} />
-      <Cards courses={courses} />
+      <div>{loading ? <Spinner /> : <Cards courses={courses} />}</div>
     </div>
   );
 };
