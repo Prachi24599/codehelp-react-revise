@@ -4,11 +4,13 @@ import { FcLike } from "react-icons/fc";
 const Card = ({ course }) => {
   return (
     <div className="w-[300px]">
-      <div>
+      <div className="relative">
         <img src={course.image.url} alt={course.image.alt} />
-        <button>
-          <FcLike />
-        </button>
+        <div className="w-[40px] h-[40px] bg-white rounded-full absolute right-2 bottom-3 grid place-items-center">
+          <button>
+            <FcLike fontSize="1.75rem" />
+          </button>
+        </div>
       </div>
       <div>
         <p>{course.title}</p>
