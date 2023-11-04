@@ -1,7 +1,12 @@
 import React from "react";
+import Card from "./Card";
 
 const Testimonial = () => {
-  return <div>Testimonial</div>;
+  return (
+    <div>
+      <Card />
+    </div>
+  );
 };
 
 export default Testimonial;
