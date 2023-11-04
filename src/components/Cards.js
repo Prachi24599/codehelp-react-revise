@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import Card from "./Card";
 
-const Cards = ({ courses }) => {
+const Cards = ({ courses, category }) => {
   //Initially all courses are not liked
   const [likedCourses, setLikedCourses] = useState([]);
 
   //It returns list/array of all courses received from the api response
   const getCourses = () => {
-    let allCourses = [];
-    Object.values(courses).forEach((courseCategory) => {
-      courseCategory.forEach((course) => {
-        allCourses.push(course);
+    if (category === "All") {
+      let allCourses = [];
+      Object.values(courses).forEach((courseCategory) => {
+        courseCategory.forEach((course) => {
+          allCourses.push(course);
+        });
       });
-    });
-    return allCourses;
+      return allCourses;
+    } else {
+      //Only specific category array will be sent
+      return courses[category];
+    }
   };
 
   return (
