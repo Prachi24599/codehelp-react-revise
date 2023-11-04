@@ -1,5 +1,5 @@
 import React from "react";
-import { FcLike } from "react-icons/fc";
+import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { toast } from "react-toastify";
 
 const Card = ({ course, likedCourses, setLikedCourses }) => {
@@ -9,7 +9,7 @@ const Card = ({ course, likedCourses, setLikedCourses }) => {
       setLikedCourses((prevState) =>
         prevState.filter((cid) => cid !== course.id)
       );
-      toast.warning("Like removed");
+      toast.warning("Like Removed");
     } else {
       //course is not already liked so insert this course in likedCourses array
       if (likedCourses.length === 0) {
@@ -19,7 +19,7 @@ const Card = ({ course, likedCourses, setLikedCourses }) => {
         //Non Array is not empty
         setLikedCourses((prevState) => [...prevState, course.id]);
       }
-      toast.success("Liked successfully");
+      toast.success("Liked Successfully");
     }
   }
   return (
@@ -28,7 +28,11 @@ const Card = ({ course, likedCourses, setLikedCourses }) => {
         <img src={course.image.url} alt={course.image.alt} />
         <div className="w-[40px] h-[40px] bg-white rounded-full absolute right-2 bottom-3 grid place-items-center">
           <button onClick={clickHandler}>
-            <FcLike fontSize="1.75rem" />
+            {likedCourses.includes(course.id) ? (
+              <FcLike fontSize="1.75rem" />
+            ) : (
+              <FcLikePlaceholder fontSize="1.75rem" />
+            )}
           </button>
         </div>
       </div>
@@ -41,4 +45,3 @@ const Card = ({ course, likedCourses, setLikedCourses }) => {
 };
 
 export default Card;
-//FcLikePlaceholder
