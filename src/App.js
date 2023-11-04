@@ -1,12 +1,13 @@
 import React from "react";
 import Testimonial from "./components/Testimonial";
+import reviews from "./data.js";
 
 const App = () => {
   return (
     <div>
       <h1>Our Testimonials</h1>
       <div></div>
-      <Testimonial />
+      <Testimonial reviews={reviews} />
     </div>
   );
 };
