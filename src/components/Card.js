@@ -38,7 +38,11 @@ const Card = ({ course, likedCourses, setLikedCourses }) => {
       </div>
       <div>
         <p>{course.title}</p>
-        <p>{course.description}</p>
+        <p>
+          {course.description.length > 100
+            ? `${course.description.substr(0, 100)}...`
+            : course.description}
+        </p>
       </div>
     </div>
   );
