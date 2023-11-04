@@ -22,11 +22,14 @@ const Testimonial = (props) => {
     }
   }
 
-  function surpriseHandler() {}
+  function surpriseHandler() {
+    let randomIndex = Math.floor(Math.random() * reviews.length);
+    setIndex(randomIndex);
+  }
 
   return (
     <div>
-      <Card review={reviews[0]} />
+      <Card review={reviews[index]} />
 
       <div>
         <button onClick={leftShiftHandler}>
