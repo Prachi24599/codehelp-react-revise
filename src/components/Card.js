@@ -4,13 +4,13 @@ const Card = ({ review }) => {
   return (
     <div>
       <div>
-        <img />
+        <img src={review.image} alt="review-img" />
       </div>
       <div>
-        <p></p>
+        <p>{review.name}</p>
       </div>
       <div>
-        <p></p>
+        <p>{review.job}</p>
       </div>
     </div>
   );
