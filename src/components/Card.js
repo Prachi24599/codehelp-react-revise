@@ -1,5 +1,10 @@
 import React from "react";
-import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
+import {
+  FaQuoteLeft,
+  FaQuoteRight,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 
 const Card = ({ review }) => {
   return (
@@ -19,13 +24,6 @@ const Card = ({ review }) => {
       <div>{review.text}</div>
       <div>
         <FaQuoteRight />
-      </div>
-      <div>
-        <button>+</button>
-        <button>*</button>
-      </div>
-      <div>
-        <button>Surprise Me</button>
       </div>
     </div>
   );
