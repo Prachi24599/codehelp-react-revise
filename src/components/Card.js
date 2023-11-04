@@ -1,8 +1,27 @@
 import React from "react";
 import { FcLike } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const Card = ({ course, likedCourses, setLikedCourses }) => {
-  function clickHandler() {}
+  function clickHandler() {
+    if (likedCourses.includes(course.id)) {
+      //course if already liked
+      setLikedCourses((prevState) =>
+        prevState.filter((cid) => cid !== course.id)
+      );
+      toast.warning("Like removed");
+    } else {
+      //course is not already liked so insert this course in likedCourses array
+      if (likedCourses.length === 0) {
+        //If array is empty
+        setLikedCourses([course.id]);
+      } else {
+        //Non Array is not empty
+        setLikedCourses((prevState) => [...prevState, course.id]);
+      }
+      toast.success("Liked successfully");
+    }
+  }
   return (
     <div className="w-[300px]">
       <div className="relative">
