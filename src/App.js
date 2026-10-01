@@ -8,6 +8,10 @@ const App = () => {
       <h1>Hello</h1>
       <Item/>
       <ItemDate/>
+      <Item/>
+      <ItemDate/>
+      <Item/>
+      <ItemDate/>
     </div>
   );
 };
