@@ -27,7 +27,9 @@ const App = () => {
   return (
     <div className="App">
       <h1>Hello</h1>
-      <Item name={response[0].itemName}/>
+      <Item name={response[0].itemName}>
+        This is Data passed inside components
+      </Item>
       <ItemDate day={response[0].itemDate} month={response[0].itemMonth} year={response[0].itemYear}/>
       <Item name={response[1].itemName}/>
       <ItemDate day={response[1].itemDate} month={response[1].itemMonth} year={response[1].itemYear}/>   
