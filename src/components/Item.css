@@ -1,4 +1,8 @@
 .item{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: yellowgreen;
+    color : red;
+}
+.parentItem{
+    display: flex;
 }
