@@ -1,4 +1,5 @@
 import "./App.css"
+import Card from "./components/Card";
 import Item from "./components/Item";
 import ItemDate from "./components/ItemDate";
 
@@ -25,7 +26,8 @@ const App = () => {
     }
   ]
   return (
-    <div className="App">
+      <div className="App">
+      <Card>
       <h1>Hello</h1>
       <Item name={response[0].itemName}>
         This is Data passed inside components
@@ -35,6 +37,7 @@ const App = () => {
       <ItemDate day={response[1].itemDate} month={response[1].itemMonth} year={response[1].itemYear}/>   
       <Item name={response[2].itemName}/>
       <ItemDate day={response[2].itemDate} month={response[2].itemMonth} year={response[2].itemYear}/>
+      </Card>
     </div>
   );
 };
