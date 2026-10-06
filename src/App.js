@@ -2,6 +2,7 @@ import "./App.css"
 import Card from "./components/Card";
 import Item from "./components/Item";
 import ItemDate from "./components/ItemDate";
+import ProductForm from "./components/ProductForm";
 
 const App = () => {
   // const itemTwoName = "SurfExcel"
@@ -37,6 +38,7 @@ const App = () => {
       <ItemDate day={response[1].itemDate} month={response[1].itemMonth} year={response[1].itemYear}/>   
       <Item name={response[2].itemName}/>
       <ItemDate day={response[2].itemDate} month={response[2].itemMonth} year={response[2].itemYear}/>
+      <ProductForm/>
       </Card>
     </div>
   );
