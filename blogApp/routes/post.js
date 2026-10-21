@@ -1,6 +1,7 @@
 import express from "express";
 import {createPost, fetchAllPost} from "../controllers/createPost.js";
 import likePost from "../controllers/likePost.js";
+import unlikePost from "../controllers/unlikePost.js";
 
 const router = express.Router();
 
@@ -11,8 +12,8 @@ router.post("/post/create", createPost);
 router.get("/posts", fetchAllPost);
 //like post
 router.post("/likes/like", likePost);
-// //unlike post
-// router.put("/likes/unlike");
+//unlike post
+router.post("/unlike/like", unlikePost);
 // //create comment
 // router.post("/comments/create");
 // //Retreive comment
