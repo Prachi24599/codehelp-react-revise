@@ -20,4 +20,23 @@ const createPost = async (req, res) => {
     }
 }
 
-export default createPost;
+const fetchAllPost = async (req, res) => {
+    try{
+        const result = await Post.find({});
+        res.status(200).json({
+            success : true,
+            data : result,
+            message : "All posts fetched!!"
+        })
+    }
+    catch(err){
+        console.log("Error ==>", err);
+        res.status(500).json({
+            success : false,
+            data : "Internal Server Error",
+            message : err.message
+        })
+    }
+}
+
+export {createPost, fetchAllPost};

@@ -1,12 +1,12 @@
 import express from "express";
-import createPost from "../controllers/createPost.js";
+import {createPost, fetchAllPost} from "../controllers/createPost.js";
 const router = express.Router();
 
 
 //create post
 router.post("/post/create", createPost);
-// //fetch all post
-// router.get("/posts", );
+//fetch all post
+router.get("/posts", fetchAllPost);
 // //like post
 // router.put("/likes/like");
 // //unlike post
