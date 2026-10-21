@@ -1,9 +1,9 @@
-import todo from "../models/todo.js";
+import Todo from "../models/todo.js";
 
 const getTodo = async (req, res) => {
     try{
         //fetch all todo items from database
-        const todoItems = await todo.find({});
+        const todoItems = await Todo.find({});
         //response
         res.status(200).json({
             success : true,
@@ -25,7 +25,7 @@ const getTodo = async (req, res) => {
 const getTodoById = async (req, res) => {
     try{
         const id = req?.params?.id;
-        const result = await todo.findById({_id : id});
+        const result = await Todo.findById({_id : id});
 
         if(!result){
             return res.status(404).json({
