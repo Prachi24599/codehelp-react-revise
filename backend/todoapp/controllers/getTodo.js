@@ -25,7 +25,7 @@ const getTodo = async (req, res) => {
 const getTodoById = async (req, res) => {
     try{
         const id = req?.params?.id;
-        const result = await todo.find({_id : id});
+        const result = await todo.findById({_id : id});
 
         if(!result){
             return res.status(404).json({
