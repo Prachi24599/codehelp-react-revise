@@ -3,10 +3,13 @@ import Post from "../models/post.js";
 const createPost = async (req, res) => {
     try{
         const {title, body} = req.body;
-        const postCreate = await Post.create({title, body});
+        // const postCreate = await Post.create({title, body});
+        const addPost = new Post({title, body})
+        const savedPost = await addPost.save();
         res.status(200).json({
             success : true,
-            data : postCreate,
+            // data : postCreate,
+            data : savedPost,
             message : "Post created successfully"
         })
     }
@@ -22,7 +25,7 @@ const createPost = async (req, res) => {
 
 const fetchAllPost = async (req, res) => {
     try{
-        const result = await Post.find({});
+        const result = await Post.find().populate("likes").populate("comments").exec();
         res.status(200).json({
             success : true,
             data : result,
