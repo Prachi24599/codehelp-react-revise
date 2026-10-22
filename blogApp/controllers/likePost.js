@@ -1,10 +1,9 @@
-import mongoose from "mongoose";
 import Like from "../models/like.js";
 import Post from "../models/post.js";
 
 const likePost = async (req, res) => {
     try{
-        const {user, id: postId} = req.body;
+        const {user, id: post} = req.body;
 
         // if (!user || !postId) {
         //     return res.status(400).json({
@@ -21,21 +20,28 @@ const likePost = async (req, res) => {
         // }
 
         //1. Find If the post exits with given Id
-        const post = await Post.findById(postId);
-        if(!post){ //post not found
+        const postFInd = await Post.findById(post);
+        if(!postFInd){ //post not found
             return res.status(400).json({
                 success : false,
                 message : "Post does not exits!"
             })
         }
-        //If post exits
-        const like = await Like.create({user});
-        post.likes.push(like._id);
-        await post.save();
+        // //If post exits
+        // const like = await Like.create({user});
+        // post.likes.push(like._id);
+        // await post.save();
+
+        const like = new Like({user, post});
+        const savedLike = await like.save();
+
+        //update the post collection basis on this
+        const updatedPost = await Post.findByIdAndUpdate(post, {$push : {likes : savedLike._id}}, {new : true});
 
         res.status(201).json({
             success : true,
-            data : {like, post},
+            // data : {like, post},
+            data : updatedPost,
             message : "Post liked successfully"
         })
     }
