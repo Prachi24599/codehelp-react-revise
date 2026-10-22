@@ -11,12 +11,17 @@ const postSchema = new mongoose.Schema({
         required : true,
         maxLength : 50
     },
-    likes : {
-        type : [{ type: mongoose.Schema.Types.ObjectId, ref: "Like" }]
-    },
-    comment : {
-        type : [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }]
-    }
+    likes : [{ 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: "Like" 
+    }],
+    comments : [{ 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: "Comment" 
+    }]
 });
 
 export default mongoose.model("Post", postSchema);
+
+//If we are referring one model from another then we are using Id's 
+//using mongoose.Schema.Types.ObjectId
