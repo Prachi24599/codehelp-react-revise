@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
-import dbConnect from "../backend/todoapp/config/database.js";
+import dbConnect from "./config/database.js";
 import user from "./routes/user.js";
 
 const app = express();
