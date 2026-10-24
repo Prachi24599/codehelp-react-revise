@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 dotenv.config();
 import dbConnect from "./config/database.js";
 import user from "./routes/user.js";
+import cookieParser from "cookie-parser";
+app.use(cookieParser());
 
 const app = express();
 const PORT = process.env.PORT || 4000;
