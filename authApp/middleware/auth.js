@@ -38,3 +38,22 @@ const auth = (req, res, next) => {
     }
 }
 
+const isStudent = (req, res, next) => {
+    try{
+        if(req.user.role !== "Student"){
+            return res.status(401).json({
+                success : false,
+                message : "This is protected routed for students!"
+            })
+        }
+        next();
+    }catch(err){
+        console.log("Error!!", err);
+        res.status(500).json({
+            success : false,
+            data : err.message,
+            message : `Server Error!!`
+        })
+    }
+}
+
