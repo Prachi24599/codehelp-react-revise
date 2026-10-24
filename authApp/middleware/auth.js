@@ -8,11 +8,11 @@ const auth = (req, res, next) => {
     try{
         //Extract JWT Token
         //Pending - Other ways to fetch the token
-        const token = req.body.token;
+        const token = req?.body?.token;
         if(!token){
             return res.status(401).json({
                 success : false,
-
+                message : "Token Missing"
             })
         }
         //Verify the token
@@ -62,7 +62,7 @@ const isAdmin = (req, res, next) => {
         if(req.user.role !== "Admin"){
             return res.status(401).json({
                 success : false,
-                message : "This is protected routed for students!"
+                message : "This is protected routed for Admin!"
             })
         }
         next();
