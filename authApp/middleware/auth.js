@@ -57,3 +57,23 @@ const isStudent = (req, res, next) => {
     }
 }
 
+const isAdmin = (req, res, next) => {
+    try{
+        if(req.user.role !== "Admin"){
+            return res.status(401).json({
+                success : false,
+                message : "This is protected routed for students!"
+            })
+        }
+        next();
+    }catch(err) {
+        console.log("Error!!", err);
+        res.status(500).json({
+            success : false,
+            data : err.message,
+            message : `Server Error!!`
+        })
+    }
+}
+
+export {auth, isStudent, isAdmin};
