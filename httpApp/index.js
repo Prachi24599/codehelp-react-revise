@@ -3,8 +3,17 @@
 const http = require("http");
 //create a server
 const server = http.createServer((req, res) => {
-    res.writeHead(200, {"Content-Type" : "text/plain"});
-    res.end("Hello from Node.js Http Server");
+    if(req.url === "/" && req.method === "GET"){
+        res.writeHead(200, {"Content-Type" : "text/plain"});
+        res.end("Hello from Node.js Http Server, This is HOME Page");
+    }else if(req.url === "/about" && req.method === "GET"){
+        res.writeHead(200, {"Content-Type" : "text/plain"});
+        res.end("About Page");
+    }else{
+        res.writeHead(404, {"Content-Type" : "text/plain"});
+        res.end("404 - Page not found")
+    }
+ 
 })
 //start the server
 server.listen(3000, () => {
