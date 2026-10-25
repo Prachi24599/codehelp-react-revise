@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import {login, signUp} from "../controllers/auth.js"
+import {login, signUp, getEmail} from "../controllers/auth.js"
 import {auth, isStudent, isAdmin} from "../middleware/auth.js";
 
 router.post("/login", login);
@@ -12,6 +12,7 @@ router.get("/test", auth, (req, res) => {
         message : "Welcome to Test!!"
     })
 })
+
 
 //Protected Route
 router.get("/student", auth, isStudent, (req, res) => {
@@ -27,5 +28,7 @@ router.get("/admin", auth, isAdmin, (req, res) => {
         message : "Welcome to the protected route of Admin!!"
     })
 })
+
+router.get("/getEmail", auth, getEmail);
 
 export default router;
