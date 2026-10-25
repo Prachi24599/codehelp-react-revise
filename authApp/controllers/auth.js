@@ -38,14 +38,22 @@ const login = async (req, res) => {
                             });
         //add token in user object
         // user = user.toObject();
-        user.token = token; //It wont work because we dont have token field in user schema
+        // user.token = token; //It wont work because we dont have token field in user schema
         user.password = undefined //hiding the password
         
         const options = {
-            expiresIn : new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), //Expires in 3 days
-            httpOnly : true
-        }
-        res.cookie("prachiCookie", token, options).status(200).json({
+            maxAge: 3 * 24 * 60 * 60 * 1000,
+            httpOnly: true
+        };
+        // res.cookie("token", token, options).status(200).json({
+        //     success : true,
+        //     data : {user, token},
+        //     // token, 
+        //     // user,
+        //     message : "User logged in successfully!"
+        // })
+
+         res.status(200).json({
             success : true,
             data : {user, token},
             // token, 

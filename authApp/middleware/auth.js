@@ -7,8 +7,11 @@ dotenv.config();
 const auth = (req, res, next) => {
     try{
         //Extract JWT Token
-        //Pending - Other ways to fetch the token
-        const token = req?.body?.token;
+        console.log("Body", req?.body?.token);
+        console.log("cookie", req?.cookies?.token);
+        console.log("Header", req?.header("Authorization")?.replace("Bearer ", "")); //most secure way
+
+        const token = req?.body?.token || req?.cookies?.token || req?.header("Authorization")?.replace("Bearer ", "");
         if(!token){
             return res.status(401).json({
                 success : false,
