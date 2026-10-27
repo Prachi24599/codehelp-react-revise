@@ -25,8 +25,8 @@ import cloudinaryConnect from "./config/cloudinary.js";
 cloudinaryConnect();
 
 //mount api rount
-import fileUpload from "express-fileupload";
-app.use("/api/v1/upload", fileUpload);
+import fileUploadRoutes from "./routes/fileUpload.js";
+app.use("/api/v1/upload", fileUploadRoutes);
 
 //run app
 app.listen(PORT, () => {
