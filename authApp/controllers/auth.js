@@ -42,24 +42,25 @@ const login = async (req, res) => {
         user.password = undefined //hiding the password
         
         const options = {
-            maxAge: 3 * 24 * 60 * 60 * 1000,
+            // maxAge: 3 * 24 * 60 * 60 * 1000,
+            expires : new Date(Date.now() + 3000),
             httpOnly: true
         };
-        // res.cookie("token", token, options).status(200).json({
-        //     success : true,
-        //     data : {user, token},
-        //     // token, 
-        //     // user,
-        //     message : "User logged in successfully!"
-        // })
-
-         res.status(200).json({
+        res.cookie("token", token, options).status(200).json({
             success : true,
             data : {user, token},
             // token, 
             // user,
             message : "User logged in successfully!"
         })
+
+        //  res.status(200).json({
+        //     success : true,
+        //     data : {user, token},
+        //     // token, 
+        //     // user,
+        //     message : "User logged in successfully!"
+        // })
     }else{
         //Password does not match
         res.status(403).json({
@@ -113,4 +114,26 @@ const signUp = async (req, res) => {
     }
 }   
 
-export {login, signUp};
+
+const getEmail = async (req, res) => { 
+    try{
+       const id = req?.user?.id;
+       console.log("id", id);
+       const user = await User.findById(id);
+       res.status(200).json({
+            success : true,
+            data : user,
+            message : `Fetched user data!`
+        })
+    }
+    catch(err) {
+        console.log("Error!!", err);
+        res.status(500).json({
+            success : false,
+            data : err.message,
+            message : `Server Error!!`
+        })
+    }
+}
+
+export {login, signUp, getEmail};
