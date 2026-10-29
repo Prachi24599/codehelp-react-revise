@@ -30,7 +30,7 @@ const imageUpload = async (req, res) => {
 
 
         //Validation - validate supported types
-        const supportedType = ["jpg, jpeg", "png"];
+        const supportedType = ["jpg", "jpeg", "png"];
         //extname returns .png, and using slice(1) we are removing the .
         const fileType = path.extname(file.name).slice(1).toLowerCase();
         console.log(fileType);
