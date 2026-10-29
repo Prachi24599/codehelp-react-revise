@@ -14,11 +14,14 @@ app.use(express.json());
 
 //add file upload
 import fileUpload from "express-fileupload";
-app.use(fileUpload());
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
 
 //connect with db
 import dbConnect from "./config/database.js";
-dbConnect();
+await dbConnect();
 
 //connect to cloudinary
 import cloudinaryConnect from "./config/cloudinary.js";
