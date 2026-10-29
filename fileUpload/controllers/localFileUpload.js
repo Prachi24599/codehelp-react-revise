@@ -1,9 +1,9 @@
-import File from "../models/file.js";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { v2 as cloudinary} from "cloudinary";
+
 //__dirname does not support directly in commonJS
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 //local file upload take the media from clients pc and store it in the server path
 const localFileUpload = async(req, res) => {
     try{
@@ -44,19 +44,6 @@ const localFileUpload = async(req, res) => {
     }
 }   
 
-// export default localFileUpload;
-function isFileTypeSupported(type, supportedType){
-    return supportedType.includes(type);
-}
+export default localFileUpload;
 
-//folder - name of the folder which we have created on cloudinary
-async function uploadFileToCloudinary(file, folder, quality){
-    const options = {folder};
-    console.log("TempFilePath", file.tempFilePath);
-    // options.resource_type = "auto";
-    // if(quality){
-    //     options.quality = quality;
-    // }
-    return await cloudinary.uploader.upload(file.tempFilePath, options);
-}
 
