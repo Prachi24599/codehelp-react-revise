@@ -6,6 +6,8 @@ function isFileTypeSupported(fileType, supportedType){
     return supportedType.includes(fileType);
 }
 //folder - name of the folder which we have created on cloudinary to store our files
+//tempFilePath - It is a file temporary path on server where we store the file temporarity
+//before uploading it to the media server
 async function uploadFileToCloudinary(file, folder) {
     const options = {folder};
     console.log("in upload cloudinary fun", file.tempFilePath, folder);
