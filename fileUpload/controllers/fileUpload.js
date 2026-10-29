@@ -14,10 +14,11 @@ const localFileUpload = async(req, res) => {
                 success: false,
                 message: "Please upload a file using the 'file' field."
             });
-        }
+        } 
+
 
         //defining a path to store file on server
-        // let path = __dirname + "/files/" + Date.now(); - __dirname does not work under ES
+        // let path = __dirname + "/files/" + Date.now(); - __dirname does not work under commonJS
 
         // const extension = path.extname(file.name);
         // const uploadPath = path.join(__dirname, "files", `${Date.now()}${extension}`);
