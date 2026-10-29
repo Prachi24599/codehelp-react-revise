@@ -10,6 +10,7 @@ async function uploadFileToCloudinary(file, folder) {
     const options = {
         folder,
         resource_type : "video" //by default cloudinary treat as images so for videos we need to specify this tag
+        // resource_type : "auto" - We can also add this to automatically detect the type of media we are going to upload
     };
     console.log("in upload cloudinary fun", file.tempFilePath, folder);
     return await cloudinary.uploader.upload(file.tempFilePath, options);
@@ -42,6 +43,15 @@ const videoUpload = async (req, res) => {
                 message : "File type is not supported"
             })
         }
+
+        //upload the file size upto 5Mb
+        // const fileSize = file.size;
+        // if(fileSize > 5 * 1024 * 1024){
+        //     return res.status(500).json({
+        //         success : false,
+        //         message : "File too large, upload file less than 5 mb",
+        //     })
+        // }
 
         //If fileType supported
         //upload to cloudinary
