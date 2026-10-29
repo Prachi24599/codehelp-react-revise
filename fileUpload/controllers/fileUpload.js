@@ -1,25 +1,31 @@
 import File from "../models/file.js";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-
+import { v2 as cloudinary} from "cloudinary";
+//__dirname does not support directly in commonJS
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 //local file upload take the media from clients pc and store it in the server path
 const localFileUpload = async(req, res) => {
     try{
         //Fetch file from request
         const file = req?.files?.file;
-        console.log("File => ", file);
+        if (!file || Array.isArray(file)) {
+            return res.status(400).json({
+                success: false,
+                message: "Please upload a file using the 'file' field."
+            });
+        }
 
         //defining a path to store file on server
         // let path = __dirname + "/files/" + Date.now(); - __dirname does not work under ES
 
-        const uploadPath = path.join(__dirname, "files", String(Date.now()) + `.${file.name.split('.')[1]}`);
-        console.log("path", uploadPath);
+        // const extension = path.extname(file.name);
+        // const uploadPath = path.join(__dirname, "files", `${Date.now()}${extension}`);
+        const uploadPath = path.join(__dirname, "files", String(Date.now()) + `.${file.name.split('.').at(-1)}`);
+        console.log("uploadPath", uploadPath);
 
         //add path to the move function
-        await file.mv(uploadPath, (err) => {
-            console.log("Error while saving file", err);
-        });
+        await file.mv(uploadPath);
 
         //create successful response
         res.status(200).json({
@@ -37,4 +43,19 @@ const localFileUpload = async(req, res) => {
     }
 }   
 
-export default localFileUpload;
+// export default localFileUpload;
+function isFileTypeSupported(type, supportedType){
+    return supportedType.includes(type);
+}
+
+//folder - name of the folder which we have created on cloudinary
+async function uploadFileToCloudinary(file, folder, quality){
+    const options = {folder};
+    console.log("TempFilePath", file.tempFilePath);
+    // options.resource_type = "auto";
+    // if(quality){
+    //     options.quality = quality;
+    // }
+    return await cloudinary.uploader.upload(file.tempFilePath, options);
+}
+
