@@ -7,8 +7,11 @@ function isFileTypeSupported(fileType, supportedType){
 }
 
 async function uploadFileToCloudinary(file, folder, quality) {
-    const options = {folder};
-    if(quality) options.quality = quality;
+    const options = {
+        folder,
+        transformation : [{width : 500, height : 500, crop : "limit", quality : quality}]
+    };
+    // if(quality) options.quality = quality;
     console.log("in upload cloudinary fun", file.tempFilePath, folder);
     return await cloudinary.uploader.upload(file.tempFilePath, options);
 }
@@ -43,7 +46,7 @@ const imageSizeReducer = async (req, res) => {
 
         //If fileType supported
         //upload to cloudinary
-        const response = await uploadFileToCloudinary(file, "codehelp", 10);
+        const response = await uploadFileToCloudinary(file, "codehelp", 80);
         console.log("Image uploaded to cloudinary", res);
 
         //save to database
