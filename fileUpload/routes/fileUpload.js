@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
-import {localFileUpload, imageUpload} from "../controllers/fileUpload.js";
+import localFileUpload from "../controllers/fileUpload.js";
+import imageUpload from "../controllers/imageUpload.js";
 
 //Api router
 router.post("/localFileUpload", localFileUpload);
