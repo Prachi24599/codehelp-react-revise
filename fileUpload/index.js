@@ -13,10 +13,16 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 
 //add file upload
+//We can add the size limit to add the 
 import fileUpload from "express-fileupload";
 app.use(fileUpload({
     useTempFiles : true,
-    tempFileDir : '/tmp/'
+    tempFileDir : '/tmp/',
+    limits : {
+        fileSize : 5 * 1024 * 1024
+    },
+    abortOnLimit : true,
+    responseOnLimit : "File too large. Maximum allowed size is 5mb"
 }));
 
 //connect with db
